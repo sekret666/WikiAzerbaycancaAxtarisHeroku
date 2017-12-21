@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const recipepuppyHost = 'http://www.recipepuppy.com/api/?q=';
 const currencyConvertHost = "http://api.fixer.io/latest?";
 const chucknorrisHost = 'https://api.chucknorris.io/jokes/random';
-const wikiPediaApiHost = 'https://az.wikipedia.org/w/api.php?'; //https://www.mediawiki.org/wiki/API:Opensearch
+const wikiPediaApiHost = 'https://az.wikipedia.org/w/api.php?'; 
 
 app.get('/dummyget', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -74,8 +74,8 @@ app.post('/webhook', function (req, res) {
                 let displayText = `${searchTerm} heçnə tapa bilmədim`;
                 let result;
                 if (output && output[0]) {
-                    displayText = `Vikipediyadan ${output[1][0]}: ${output[2][0]} haqqında tapdığım şeylər `;
-                    let telegramText = htmlEntities(`Vikipediyadan *${output[1][0]}*: ${output[2][0]} haqqında tapdığım məlumatlar \n\n Davamını oxu [WikiPedia](${output[3][0]})`);
+                    displayText = `Vikipediyadan ${output[1][0]}: haqqında bunları tapdım. ${output[2][0]}  `;
+                    let telegramText = htmlEntities(`Vikipediyadan *${output[1][0]}* haqqında tapdığım məlumatlar ${output[2][0]}  \n\n Davamını oxu [WikiPedia](${output[3][0]})`);
                     result = toApiAiResponseMessage(displayText, displayText, toTelgramObject(telegramText, 'Markdown'));
                 }
                 res.setHeader('Content-Type', 'application/json');
