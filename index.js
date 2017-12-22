@@ -74,8 +74,8 @@ app.post('/webhook', function (req, res) {
                 let displayText = `${searchTerm} heçnə tapa bilmədim`;
                 let result;
                 if (output && output[0]) {
-                    displayText = `Vikipediyadan ${output[1][0]}: haqqında bunları tapdım. ${output[2][0]}  `;
-                    let telegramText = htmlEntities(`Vikipediyadan *${output[1][0]}* haqqında tapdığım məlumatlar ${output[2][0]}  \n\n Davamını oxu [WikiPedia](${output[3][0]})`);
+                    displayText = `  ${output[2][0]}  `;
+                    let telegramText = htmlEntities(` *${output[1][0]}* ${output[2][0]}  \n\n Davamını oxu [WikiPedia](${output[3][0]})`);
                     result = toApiAiResponseMessage(displayText, displayText, toTelgramObject(telegramText, 'Markdown'));
                 }
                 res.setHeader('Content-Type', 'application/json');
